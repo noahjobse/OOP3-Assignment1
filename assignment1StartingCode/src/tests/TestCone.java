@@ -1,7 +1,7 @@
 package tests;
 
 import shapes.Cone;
-import utilities.Sort;
+import sorts.Sort;
 
 public class TestCone {
     public static void main(String[] args) {

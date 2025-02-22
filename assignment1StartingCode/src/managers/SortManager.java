@@ -1,10 +1,11 @@
 package managers;
 
 import java.util.Comparator;
+
 import shapes.Shape;
 import shapes.VolumeCompare;
+import sorts.*;
 import shapes.BaseAreaCompare;
-import utilities.Sort;
 
 /**
  * Manages sorting of Shape objects based on user-defined parameters.
@@ -90,25 +91,20 @@ public class SortManager {
                 Sort.selectionSort(shapes, comparator);
                 break;
 
-            /*
-             * Future Sorting Algorithms:
-             * Uncomment and implement them in the Sort class when needed.
-             */
+            case 'm': // Merge Sort
+            case 'M':
+                Sort.mergeSort(shapes, comparator);
+                break;
 
-            // case 'm': // Merge Sort
-            // case 'M':
-            // Sort.mergeSort(shapes, comparator);
-            // break;
+            case 'q': // Quick Sort
+            case 'Q':
+                Sort.quickSort(shapes, comparator);
+                break;
 
-            // case 'q': // Quick Sort
-            // case 'Q':
-            // Sort.quickSort(shapes, comparator);
-            // break;
-
-            // case 'r': // Radix Sort (only applicable for integer-based sorting)
-            // case 'R':
-            // Sort.radixSort(shapes);
-            // break;
+            case 'h': // Heap Sort
+            case 'H':
+                Sort.heapSort(shapes, comparator);
+                break;
 
             default:
                 System.err.println("Invalid sort type: " + sortType);

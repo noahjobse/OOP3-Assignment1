@@ -8,6 +8,7 @@ import shapes.*;
 /**
  * Handles file reading and parsing for Shape objects.
  * Reads a specified file and converts each line into a Shape instance.
+ * 
  * Original implementation by Chris, refactored by Noah.
  */
 public class FileManager {
@@ -42,8 +43,10 @@ public class FileManager {
             for (int i = 0; i < numShapes; i++) {
                 String[] tokens = br.readLine().trim().split("\\s+"); // Split line by spaces
                 String type = tokens[0]; // Extract shape type
-                double height = Double.parseDouble(tokens[1]);
-                double secondValue = Double.parseDouble(tokens[2]);
+
+                // Parse and round values
+                double height = round(Double.parseDouble(tokens[1]));
+                double secondValue = round(Double.parseDouble(tokens[2]));
 
                 // Create shape instances based on type
                 switch (type) {
@@ -83,5 +86,15 @@ public class FileManager {
             System.err.println("Error reading file: " + e.getMessage());
         }
         return shapes;
+    }
+
+    /**
+     * Rounds a double value to 2 decimal places.
+     *
+     * @param value the value to be rounded
+     * @return rounded value
+     */
+    private static double round(double value) {
+        return Math.round(value * 100.0) / 100.0; // Rounds to 2 decimal places
     }
 }
