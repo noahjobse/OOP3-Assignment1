@@ -1,12 +1,9 @@
 package appDomain;
 
-import manager.SortManager;
+import managers.SortManager;
 
-public class AppDriver
-{
-
-	public static void main( String[] args )
-	{
+public class AppDriver {
+	public static void main(String[] args) {
 		new SortManager(args);
 	}
 

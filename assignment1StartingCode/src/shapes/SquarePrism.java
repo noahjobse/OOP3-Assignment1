@@ -1,7 +1,9 @@
 package shapes;
 
-/*
+/**
  * Class representing a Square Prism.
+ * 
+ * @author CRacicot
  */
 public class SquarePrism extends Shape {
     private double edgeLength;
@@ -27,6 +29,7 @@ public class SquarePrism extends Shape {
 
     @Override
     public String toString() {
-        return "SquarePrism [Height=" + getHeight() + ", Edge Length=" + edgeLength + ", Base Area=" + calcBaseArea() + ", Volume=" + calcVolume() + "]";
+        return "SquarePrism [Height=" + getHeight() + ", Edge Length=" + edgeLength + ", Base Area=" + calcBaseArea()
+                + ", Volume=" + calcVolume() + "]";
     }
 }

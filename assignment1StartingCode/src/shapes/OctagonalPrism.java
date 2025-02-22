@@ -1,7 +1,9 @@
 package shapes;
 
-/*
+/**
  * Class representing an Octagonal Prism.
+ * 
+ * @author CRacicot
  */
 public class OctagonalPrism extends Shape {
     private double edgeLength;
@@ -27,6 +29,7 @@ public class OctagonalPrism extends Shape {
 
     @Override
     public String toString() {
-        return "OctagonalPrism [Height=" + getHeight() + ", Edge Length=" + edgeLength + ", Base Area=" + calcBaseArea() + ", Volume=" + calcVolume() + "]";
+        return "OctagonalPrism [Height=" + getHeight() + ", Edge Length=" + edgeLength + ", Base Area=" + calcBaseArea()
+                + ", Volume=" + calcVolume() + "]";
     }
 }

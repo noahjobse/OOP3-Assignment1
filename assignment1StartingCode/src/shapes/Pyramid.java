@@ -1,7 +1,8 @@
 package shapes;
 
-/*
+/**
  * Class representing a Pyramid.
+ * 
  * @author CRacicot
  */
 public class Pyramid extends Shape {
@@ -28,6 +29,7 @@ public class Pyramid extends Shape {
 
     @Override
     public String toString() {
-        return "Pyramid [Height=" + getHeight() + ", Edge Length=" + edgeLength + ", Base Area=" + calcBaseArea() + ", Volume=" + calcVolume() + "]";
+        return "Pyramid [Height=" + getHeight() + ", Edge Length=" + edgeLength + ", Base Area=" + calcBaseArea()
+                + ", Volume=" + calcVolume() + "]";
     }
 }

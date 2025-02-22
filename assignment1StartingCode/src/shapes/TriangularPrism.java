@@ -1,7 +1,8 @@
 package shapes;
 
-/*
+/**
  * Class representing a Triangular Prism.
+ * 
  * @author CRacicot
  */
 public class TriangularPrism extends Shape {
@@ -28,6 +29,7 @@ public class TriangularPrism extends Shape {
 
     @Override
     public String toString() {
-        return "TriangularPrism [Height=" + getHeight() + ", Edge Length=" + edgeLength + ", Base Area=" + calcBaseArea() + ", Volume=" + calcVolume() + "]";
+        return "TriangularPrism [Height=" + getHeight() + ", Edge Length=" + edgeLength + ", Base Area="
+                + calcBaseArea() + ", Volume=" + calcVolume() + "]";
     }
 }
