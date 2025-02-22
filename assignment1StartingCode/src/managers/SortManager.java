@@ -66,7 +66,8 @@ public class SortManager {
         System.out.println("\nSorting Completed.");
         System.out.println("Execution Time: " + elapsedTimeMs + " ms");
 
-        // Print the sorted shapes
+        // Print the sorting criteria and sorted shapes
+        System.out.println("\nSorted by: " + getSortingCriteria());
         System.out.println("Sorted Shapes:");
         for (Shape s : tempShapes) {
             System.out.println(s);
@@ -90,6 +91,25 @@ public class SortManager {
             default:
                 System.err.println("Invalid compare type: " + compareType);
                 return null;
+        }
+    }
+
+    /**
+     * Gets the sorting criteria as a string.
+     */
+    private String getSortingCriteria() {
+        switch (compareType) {
+            case 'h':
+            case 'H':
+                return "Height";
+            case 'a':
+            case 'A':
+                return "Base Area";
+            case 'v':
+            case 'V':
+                return "Volume";
+            default:
+                return "Unknown";
         }
     }
 

@@ -7,17 +7,16 @@ import managers.SortManager;
  */
 public class TestSortBubble {
     public static void main(String[] args) {
-
         System.out.println("\nSorting by Height:");
         runTest(new String[] {
-                "-fres/shapes1.txt", // Load shapes from file
+                "-fres/shapes0.txt", // Load shapes from file
                 "-Th", // Compare by height
                 "-Sb" // Sort using Bubble Sort
         });
 
         System.out.println("\nSorting by Base Area:");
         runTest(new String[] {
-                "-fres/shapes1.txt",
+                "-fres/shapes0.txt",
                 "-Ta", // Compare by base area
                 "-Sb" // Sort using Bubble Sort
         });
@@ -37,6 +36,7 @@ public class TestSortBubble {
      *                  and sorting method.
      */
     private static void runTest(String[] arguments) {
+        System.out.println("\nExecuting SortManager with arguments: " + String.join(" ", arguments));
         new SortManager(arguments);
     }
 }
