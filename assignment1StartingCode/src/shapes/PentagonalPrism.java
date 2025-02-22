@@ -1,7 +1,9 @@
 package shapes;
 
-/*
+/**
  * Class representing a Pentagonal Prism.
+ * 
+ * @author CRacicot
  */
 public class PentagonalPrism extends Shape {
     private double edgeLength;
@@ -27,6 +29,7 @@ public class PentagonalPrism extends Shape {
 
     @Override
     public String toString() {
-        return "PentagonalPrism [Height=" + getHeight() + ", Edge Length=" + edgeLength + ", Base Area=" + calcBaseArea() + ", Volume=" + calcVolume() + "]";
+        return "PentagonalPrism [Height=" + getHeight() + ", Edge Length=" + edgeLength + ", Base Area="
+                + calcBaseArea() + ", Volume=" + calcVolume() + "]";
     }
 }

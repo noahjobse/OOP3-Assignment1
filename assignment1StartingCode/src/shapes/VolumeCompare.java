@@ -4,6 +4,11 @@ import java.util.Comparator;
 
 import sorts.Sort;
 
+/**
+ * Class representing a Comparator for comparing shapes based on their volume.
+ * 
+ * @author CRacicot
+ */
 public class VolumeCompare implements Comparator<Shape> {
 
     @Override

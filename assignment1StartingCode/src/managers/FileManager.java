@@ -9,15 +9,11 @@ import shapes.*;
  * Handles file reading and parsing for Shape objects.
  * Reads a specified file and converts each line into a Shape instance.
  * 
- * Original implementation by Chris, refactored by Noah.
+ * Original implementation by CRacicot, refactored by NJobse.
  */
 public class FileManager {
 
     /**
-     * Loads shapes from the specified file.
-     * The first line of the file specifies the number of shapes.
-     * Each subsequent line contains the shape type and required parameters.
-     *
      * Format:
      * <ShapeType> <Height> <SecondValue>
      * - Cylinder <Height> <Radius>
@@ -27,7 +23,7 @@ public class FileManager {
      * - TriangularPrism <Height> <EdgeLength>
      * - PentagonalPrism <Height> <EdgeLength>
      * - OctagonalPrism <Height> <EdgeLength>
-     *
+     * 
      * @param fileName the path to the file containing shape data
      * @return an array of Shape objects loaded from the file, or null if an error
      *         occurs
@@ -38,16 +34,13 @@ public class FileManager {
             // Read the first line: Number of shapes in the file
             int numShapes = Integer.parseInt(br.readLine().trim());
             shapes = new Shape[numShapes];
-
             // Read and parse each shape line
             for (int i = 0; i < numShapes; i++) {
                 String[] tokens = br.readLine().trim().split("\\s+"); // Split line by spaces
                 String type = tokens[0]; // Extract shape type
-
                 // Parse and round values
                 double height = round(Double.parseDouble(tokens[1]));
                 double secondValue = round(Double.parseDouble(tokens[2]));
-
                 // Create shape instances based on type
                 switch (type) {
                     case "Cylinder":
@@ -76,7 +69,6 @@ public class FileManager {
                         break;
                 }
             }
-
             // Print loaded shapes for verification
             System.out.println("Loaded Shapes:");
             for (Shape s : shapes) {

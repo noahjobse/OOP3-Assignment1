@@ -3,8 +3,9 @@ package tests;
 import managers.SortManager;
 
 /**
- * Test class for verifying Heap Sort on Shape objects.
- * Tests sorting by height (Comparable) and by base area/volume (Comparator).
+ * Test class for sorting shapes using Heap Sort.
+ * 
+ * @author NJobse
  */
 public class TestSortHeap {
     public static void main(String[] args) {

@@ -3,6 +3,11 @@ package sorts; // Ensure this matches your project structure
 import java.util.Comparator;
 import java.util.Arrays;
 
+/**
+ * Class representing a Comparator for comparing shapes based on their volume.
+ * 
+ * @author NJobse & CRacicot
+ */
 public class Sort {
     // ----------------- BubbleSort -----------------
     public static <T extends Comparable<T>> void bubbleSort(T[] arr) {

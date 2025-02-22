@@ -1,7 +1,9 @@
 package shapes;
 
-/*
+/**
  * Class representing a Cylinder.
+ * 
+ * @author CRacicot
  */
 public class Cylinder extends Shape {
     private double radius;
@@ -27,6 +29,7 @@ public class Cylinder extends Shape {
 
     @Override
     public String toString() {
-        return "Cylinder [Height=" + getHeight() + ", Radius=" + radius + ", Base Area=" + calcBaseArea() + ", Volume=" + calcVolume() + "]";
+        return "Cylinder [Height=" + getHeight() + ", Radius=" + radius + ", Base Area=" + calcBaseArea() + ", Volume="
+                + calcVolume() + "]";
     }
 }

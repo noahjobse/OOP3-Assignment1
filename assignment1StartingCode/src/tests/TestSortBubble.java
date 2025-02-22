@@ -3,7 +3,9 @@ package tests;
 import managers.SortManager;
 
 /**
- * Test class for verifying Bubble Sort functionality on Shape objects.
+ * Test class for sorting shapes using Bubble Sort.
+ * 
+ * @author NJobse
  */
 public class TestSortBubble {
     public static void main(String[] args) {
@@ -13,14 +15,12 @@ public class TestSortBubble {
                 "-Th", // Compare by height
                 "-Sb" // Sort using Bubble Sort
         });
-
         System.out.println("\nSorting by Base Area:");
         runTest(new String[] {
                 "-fres/shapes0.txt",
                 "-Ta", // Compare by base area
                 "-Sb" // Sort using Bubble Sort
         });
-
         System.out.println("\nSorting by Volume:");
         runTest(new String[] {
                 "-fres/shapes1.txt",

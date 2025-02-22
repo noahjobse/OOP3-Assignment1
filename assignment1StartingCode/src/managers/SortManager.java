@@ -11,6 +11,8 @@ import shapes.BaseAreaCompare;
  * Manages sorting of Shape objects based on user-defined parameters.
  * Parses command-line arguments to determine sorting type and method.
  * Measures and reports execution time for a single run.
+ * 
+ * Original implementation by CRacicot, refactored by NJobse.
  */
 public class SortManager {
     private Shape[] shapes;

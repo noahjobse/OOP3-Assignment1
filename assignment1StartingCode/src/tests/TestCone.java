@@ -3,6 +3,11 @@ package tests;
 import shapes.Cone;
 import sorts.Sort;
 
+/**
+ * Test class for Cone objects.
+ * 
+ * @author CRacicot
+ */
 public class TestCone {
     public static void main(String[] args) {
         // Create Cone objects

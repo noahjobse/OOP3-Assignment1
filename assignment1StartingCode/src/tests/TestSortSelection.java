@@ -3,13 +3,13 @@ package tests;
 import managers.SortManager;
 
 /**
- * Test class for verifying Selection Sort on Shape objects.
- * Tests sorting by height (Comparable) and by base area/volume (Comparator).
+ * Test class for sorting shapes using Selection Sort.
+ * 
+ * @author NJobse
  */
 public class TestSortSelection {
     public static void main(String[] args) {
         System.out.println("\nRunning Tests: Selection Sort (Using Comparable and Comparator)");
-
         // Test sorting by height using Comparable (compareTo method in Shape)
         System.out.println("\nSorting by Height:");
         runTest(new String[] {
@@ -17,7 +17,6 @@ public class TestSortSelection {
                 "-Th", // Compare by height (natural order)
                 "-Ss" // Sort using selection sort
         });
-
         // Test sorting by base area using Comparator
         System.out.println("\nSorting by Base Area:");
         runTest(new String[] {
@@ -25,7 +24,6 @@ public class TestSortSelection {
                 "-Ta", // Compare by base area
                 "-Ss" // Sort using selection sort
         });
-
         // Test sorting by volume using Comparator
         System.out.println("\nSorting by Volume:");
         runTest(new String[] {

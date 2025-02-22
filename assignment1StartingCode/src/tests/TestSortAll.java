@@ -2,6 +2,11 @@ package tests;
 
 import managers.SortManager;
 
+/**
+ * Test class for sorting algorithms.
+ * 
+ * @author NJobse
+ */
 public class TestSortAll {
     public static void main(String[] args) {
         String[] compareTypes = { "h", "a", "v" }; // Height, Base Area, Volume
