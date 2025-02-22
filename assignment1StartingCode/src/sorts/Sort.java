@@ -4,15 +4,12 @@ import java.util.Comparator;
 import java.util.Arrays;
 
 public class Sort {
-
     // ----------------- BubbleSort -----------------
     public static <T extends Comparable<T>> void bubbleSort(T[] arr) {
         int n = arr.length;
         boolean swapped;
-
         for (int i = 0; i < n - 1; i++) {
             swapped = false;
-
             for (int j = 0; j < n - i - 1; j++) {
                 if (arr[j].compareTo(arr[j + 1]) > 0) {
                     // Swap elements

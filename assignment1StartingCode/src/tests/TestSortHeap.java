@@ -9,7 +9,6 @@ import managers.SortManager;
 public class TestSortHeap {
     public static void main(String[] args) {
         System.out.println("\nRunning Tests: Heap Sort (Using Comparable and Comparator)");
-
         // Test sorting by height using Comparable (compareTo method in Shape)
         System.out.println("\nSorting by Height:");
         runTest(new String[] {
@@ -17,7 +16,6 @@ public class TestSortHeap {
                 "-Th", // Compare by height (natural order)
                 "-Sh" // Sort using heap sort
         });
-
         // Test sorting by base area using Comparator
         System.out.println("\nSorting by Base Area:");
         runTest(new String[] {
@@ -25,7 +23,6 @@ public class TestSortHeap {
                 "-Ta", // Compare by base area
                 "-Sh" // Sort using heap sort
         });
-
         // Test sorting by volume using Comparator
         System.out.println("\nSorting by Volume:");
         runTest(new String[] {
