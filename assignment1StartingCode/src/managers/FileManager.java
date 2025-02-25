@@ -25,8 +25,7 @@ public class FileManager {
      * - OctagonalPrism <Height> <EdgeLength>
      * 
      * @param fileName the path to the file containing shape data
-     * @return an array of Shape objects loaded from the file, or null if an error
-     *         occurs
+     * @return an array of Shape objects loaded from the file, or null if an error occurs.
      */
     public static Shape[] loadShapes(String fileName) {
         Shape[] shapes = null;
@@ -34,13 +33,16 @@ public class FileManager {
             // Read the first line: Number of shapes in the file
             int numShapes = Integer.parseInt(br.readLine().trim());
             shapes = new Shape[numShapes];
+
             // Read and parse each shape line
             for (int i = 0; i < numShapes; i++) {
                 String[] tokens = br.readLine().trim().split("\\s+"); // Split line by spaces
                 String type = tokens[0]; // Extract shape type
+
                 // Parse and round values
-                double height = round(Double.parseDouble(tokens[1]));
-                double secondValue = round(Double.parseDouble(tokens[2]));
+                double height = Double.parseDouble(tokens[1]);
+                double secondValue = Double.parseDouble(tokens[2]);
+
                 // Create shape instances based on type
                 switch (type) {
                     case "Cylinder":
@@ -68,11 +70,6 @@ public class FileManager {
                         System.err.println("Unknown shape type: " + type);
                         break;
                 }
-            }
-            // Print loaded shapes for verification
-            System.out.println("Loaded Shapes:");
-            for (Shape s : shapes) {
-                System.out.println(s);
             }
         } catch (IOException | NumberFormatException e) {
             System.err.println("Error reading file: " + e.getMessage());
