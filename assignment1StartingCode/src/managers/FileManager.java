@@ -40,8 +40,8 @@ public class FileManager {
                 String type = tokens[0]; // Extract shape type
 
                 // Parse and round values
-                double height = round(Double.parseDouble(tokens[1]));
-                double secondValue = round(Double.parseDouble(tokens[2]));
+                double height = Double.parseDouble(tokens[1]);
+                double secondValue = Double.parseDouble(tokens[2]);
 
                 // Create shape instances based on type
                 switch (type) {
