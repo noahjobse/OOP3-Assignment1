@@ -11,8 +11,6 @@ import shapes.BaseAreaCompare;
  * Manages sorting of Shape objects based on user-defined parameters.
  * Parses command-line arguments to determine sorting type and method.
  * Measures and reports execution time for a single run.
- * 
- * Original implementation by CRacicot, refactored by NJobse.
  */
 public class SortManager {
     private Shape[] shapes;
@@ -23,12 +21,10 @@ public class SortManager {
     /**
      * Constructor: Parses command-line arguments and initiates sorting.
      *
-     * @param args Command-line arguments specifying file, comparison type, and
-     *             sorting algorithm.
+     * @param args Command-line arguments specifying file, comparison type, and sorting algorithm.
      */
     public SortManager(String[] args) {
         for (String s : args) {
-            System.out.println(s);
             if (s.startsWith("-f") || s.startsWith("-F")) {
                 fileName = s.substring(2);
             } else if (s.startsWith("-t") || s.startsWith("-T")) {
@@ -59,21 +55,35 @@ public class SortManager {
         Shape[] tempShapes = Arrays.copyOf(shapes, shapes.length); // Copy array to preserve original
 
         long startTime = System.nanoTime();
-
         executeSort(tempShapes, comparator); // Run the selected sorting algorithm
-
         long endTime = System.nanoTime();
         double elapsedTimeMs = (endTime - startTime) / 1_000_000.0; // Convert to milliseconds
 
-        System.out.println("\nSorting Completed.");
-        System.out.println("Execution Time: " + elapsedTimeMs + " ms");
+        // Print sorted elements in the desired format
+        printKeySortedElements(tempShapes, elapsedTimeMs);
+    }
 
-        // Print the sorting criteria and sorted shapes
-        System.out.println("\nSorted by: " + getSortingCriteria());
-        System.out.println("Sorted Shapes:");
-        for (Shape s : tempShapes) {
-            System.out.println(s);
+    /**
+     * Prints first, last, and every 1000th sorted element.
+     */
+    private void printKeySortedElements(Shape[] sortedShapes, double elapsedTimeMs) {
+        int totalShapes = sortedShapes.length;
+
+        System.out.println("\n------------------------------------------------");
+
+        // First element
+        System.out.printf("First element is:\t%s%n", sortedShapes[0]);
+
+        // Every 1000th element
+        for (int i = 1000; i < totalShapes; i += 1000) {
+            System.out.printf("%d-th element:\t%s%n", i, sortedShapes[i]);
         }
+
+        // Last element
+        System.out.printf("Last element is:\t%s%n", sortedShapes[totalShapes - 1]);
+
+        System.out.println("------------------------------------------------");
+        System.out.printf("Bubble Sort run time was:\t%.4f milliseconds%n", elapsedTimeMs);
     }
 
     /**
@@ -93,25 +103,6 @@ public class SortManager {
             default:
                 System.err.println("Invalid compare type: " + compareType);
                 return null;
-        }
-    }
-
-    /**
-     * Gets the sorting criteria as a string.
-     */
-    private String getSortingCriteria() {
-        switch (compareType) {
-            case 'h':
-            case 'H':
-                return "Height";
-            case 'a':
-            case 'A':
-                return "Base Area";
-            case 'v':
-            case 'V':
-                return "Volume";
-            default:
-                return "Unknown";
         }
     }
 
