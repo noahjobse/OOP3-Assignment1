@@ -1,4 +1,4 @@
-//Jacobs v
+//Jacobs version
 
 package managers;
 
@@ -66,22 +66,12 @@ public class SortManager {
         // Print sorted elements in the desired format
         printKeySortedElements(tempShapes, elapsedTimeMs);
         
-        printZeroHeightShapes();
         
     }
 
     /**
      * Prints first, last, and every 1000th sorted element in the required format.
      */
-    private void printZeroHeightShapes() {
-        System.out.println("\n----- SHAPES WITH ZERO Height -----");
-        for (Shape shape : shapes) {
-            if (shape.getHeight() == 0.0) {
-                System.out.println(shape);
-            }
-        }
-        System.out.println("------------------------------------\n");
-    }
 
     private void printKeySortedElements(Shape[] sortedShapes, double elapsedTimeMs) {
         int totalShapes = sortedShapes.length;
