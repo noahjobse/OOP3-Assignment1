@@ -1,0 +1,42 @@
+Heap sort
+heap ordered binary tree
+max heap : parent > child
+
+build max heap : creates max heap from unsorted array 
+heapify similar but faster because we assume part of the array is already sorted
+
+Example problem: We have an array that needs sorting
+
+1. Change array into a tree
+2. Create max heap 
+3. Swap value from tree to array 
+4. Remove largest item from tree, and place it into the array
+5. Call heapify to continue sorting
+6.Repeat steps starting from step 2. until entire tree is gone and the array is sorted
+
+Step 1. Change array into tree
+	1. Look at the array from left to right, and place values into the tree top to bottom.
+
+Step 2. Create max heap
+	1. We assume that the array is not already sorted so we call build max heap, which puts the 				largest value on the top of the tree. 
+
+Step 3. Swap largest value from tree with specific array value
+	1. The largest value on the tree is then swapped with the last index in the array.
+
+Step 4. Remove largest item from tree, and place it into the array
+	1. We remove the largest value from the tree, because it is now sorted into the array.
+
+Step 5. Call heapify to continue sorting
+	1. We call heapify when tree is partially sorted, the lowest value sinks to the bottom 	of the tree and 		the largest value rises to the top. 
+
+Complexity analysis:
+Time complexity  = O(nlogn)
+Space complexity = O(logn)
+
+
+
+References: 
+
+Michael Sambol. (2016, August 2). Heap sort in 4 minutes [video]. Youtube. https://www.youtube.com/watch?v=2DmK_H7IdTo
+
+Heap Sort - Data Structures and Algorithms Tutorials. (2025, January 2) Geeks for Geeks. https://www.geeksforgeeks.org/heap-sort/
