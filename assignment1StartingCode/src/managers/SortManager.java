@@ -1,4 +1,4 @@
-//Jacobs v 2025-02-27
+// Jacobs v 2025-02-27
 package managers;
 
 import java.util.Comparator;
@@ -9,18 +9,23 @@ import sorts.Sort;
 import shapes.BaseAreaCompare;
 
 public class SortManager {
-    private Shape[] shapes;
-    private String fileName;
-    private char compareType = '\0';
-    private char sortType = '\0';
+    private Shape[] shapes; // Array to store Shape objects
+    private String fileName; // Name of the input file containing shape data
+    private char compareType = '\0'; // Stores user-selected comparison type (H, A, V)
+    private char sortType = '\0'; // Stores user-selected sorting algorithm (B, I, S, M, Q, H)
 
+    /**
+     * Constructor that takes in command-line arguments and sets up sorting parameters.
+     * It checks for valid arguments and ensures all required inputs are provided.
+     */
     public SortManager(String[] args) {
         System.out.println("Received from " + String.join(" ", args));
 
         boolean fileProvided = false, compareProvided = false, sortProvided = false;
 
+        // Loop through all command-line arguments to extract sorting parameters
         for (String s : args) {
-            if (s.startsWith("-f") || s.startsWith("-F")) {
+            if (s.startsWith("-f") || s.startsWith("-F")) { // File name
                 if (s.length() > 2) {
                     fileName = s.substring(2);
                     fileProvided = true;
@@ -28,7 +33,7 @@ public class SortManager {
                     System.err.println("Error! Missing file name after '-f'. Please provide a valid file path.");
                     return;
                 }
-            } else if (s.startsWith("-t") || s.startsWith("-T")) {
+            } else if (s.startsWith("-t") || s.startsWith("-T")) { // Comparison type (H, A, V)
                 if (s.length() > 2) {
                     compareType = Character.toUpperCase(s.charAt(2));
                     if (compareType != 'H' && compareType != 'A' && compareType != 'V') {
@@ -40,7 +45,7 @@ public class SortManager {
                     System.err.println("Error! Missing comparison type after '-t'. Use 'H', 'A', or 'V'.");
                     return;
                 }
-            } else if (s.startsWith("-s") || s.startsWith("-S")) {
+            } else if (s.startsWith("-s") || s.startsWith("-S")) { // Sorting algorithm (B, I, S, M, Q, H)
                 if (s.length() > 2) {
                     sortType = Character.toUpperCase(s.charAt(2));
                     if ("BISMQH".indexOf(sortType) == -1) {
@@ -49,42 +54,44 @@ public class SortManager {
                     }
                     sortProvided = true;
                 } else {
-                    System.err.println("Error: Missing sorting method after '-s'. Use 'B', 'I', 'S', 'M', 'Q', or 'H'.");
+                    System.err.println("Error! Missing sorting method after '-s'. Use 'B', 'I', 'S', 'M', 'Q', or 'H'.");
                     return;
                 }
             } else {
-                System.err.println("Error: Unrecognized argument '" + s + "'. Use '-f', '-t', and '-s' with valid values.");
+                System.err.println("Error! Unrecognized argument '" + s + "'. Use '-f', '-t', and '-s' with valid values.");
                 return;
             }
         }
 
+        // Ensure all required arguments are provided before proceeding
         if (!fileProvided) {
-            System.err.println("Error: Missing required file name argument '-f'.");
+            System.err.println("Error! Missing required file name argument '-f'.");
             return;
         }
         if (!compareProvided) {
-            System.err.println("Error: Missing required comparison type argument '-t'. Use 'H', 'A', or 'V'.");
+            System.err.println("Error! Missing required comparison type argument '-t'. Use 'H', 'A', or 'V'.");
             return;
         }
         if (!sortProvided) {
-            System.err.println("Error: Missing required sorting method argument '-s'. Use 'B', 'I', 'S', 'M', 'Q', or 'H'.");
+            System.err.println("Error! Missing required sorting method argument '-s'. Use 'B', 'I', 'S', 'M', 'Q', or 'H'.");
             return;
         }
 
+        // Load shapes from file into an array
         shapes = FileManager.loadShapes(fileName);
         if (shapes == null || shapes.length == 0) {
-            System.err.println("Error: No shapes loaded from file '" + fileName + "'. Ensure the file exists and contains valid shape data.");
+            System.err.println("Error! No shapes loaded from file '" + fileName + "'. Ensure the file exists and contains valid shape data.");
             return;
         }
 
-        runSorting();  // Call the new sorting execution method
+        runSorting();  // Call the sorting execution method
     }
 
     /**
      * Runs sorting and prints the results along with benchmarking time.
      */
     private void runSorting() {
-        double elapsedTimeMs = benchmarkSorting(); // Measure time
+        double elapsedTimeMs = benchmarkSorting(); // Measure sorting time
         if (elapsedTimeMs == -1) return; // Exit if sorting fails
 
         sortShapes(); // Perform actual sorting
@@ -92,15 +99,15 @@ public class SortManager {
     }
 
     /**
-     * Performs sorting but does not measure time (sorting only).
+     * Sorts the shapes without measuring time.
      */
     private void sortShapes() {
         Comparator<Shape> comparator = getComparator();
         if (comparator == null) return;
 
-        Shape[] tempShapes = Arrays.copyOf(shapes, shapes.length);
-        executeSort(tempShapes, comparator);
-        printKeySortedElements(tempShapes);
+        Shape[] tempShapes = Arrays.copyOf(shapes, shapes.length); // Copy to avoid modifying original array
+        executeSort(tempShapes, comparator); // Apply the selected sorting algorithm
+        printKeySortedElements(tempShapes); // Print sorted elements
     }
 
     /**
@@ -118,25 +125,28 @@ public class SortManager {
         Shape[] tempShapes = Arrays.copyOf(shapes, shapes.length);
 
         long startTime = System.nanoTime();
-        executeSort(tempShapes, comparator);
+        executeSort(tempShapes, comparator); // Sorting process
         long endTime = System.nanoTime();
 
-        return (endTime - startTime) / 1_000_000.0;
+        return (endTime - startTime) / 1_000_000.0; // Convert to milliseconds
     }
 
+    /**
+     * Prints important elements from the sorted list.
+     */
     private void printKeySortedElements(Shape[] sortedShapes) {
         int totalShapes = sortedShapes.length;
 
         System.out.println("\n------------------------------------------------");
         System.out.printf("%-10s %-30s %-15s%n", "Index", "FileName+Shape", getComparisonType());
 
-        printFormattedOutput("First", sortedShapes[0]);
+        printFormattedOutput("First", sortedShapes[0]); // First element
 
         for (int i = 1000; i < totalShapes; i += 1000) {
-            printFormattedOutput(i + "-th", sortedShapes[i]);
+            printFormattedOutput(i + "-th", sortedShapes[i]); // Every 1000th element
         }
 
-        printFormattedOutput("Last", sortedShapes[totalShapes - 1]);
+        printFormattedOutput("Last", sortedShapes[totalShapes - 1]); // Last element
 
         System.out.println("------------------------------------------------");
     }
@@ -147,6 +157,9 @@ public class SortManager {
         System.out.printf("%-10s %-30s %-15.4f%n", index, shapeInfo, value);
     }
 
+    /**
+     * Returns the appropriate comparator based on user selection.
+     */
     private Comparator<Shape> getComparator() {
         switch (compareType) {
             case 'H': return Comparator.naturalOrder();
@@ -156,6 +169,9 @@ public class SortManager {
         }
     }
 
+    /**
+     * Executes the chosen sorting algorithm.
+     */
     private void executeSort(Shape[] arr, Comparator<Shape> comparator) {
         switch (sortType) {
             case 'B': Sort.bubbleSort(arr, comparator); break;
