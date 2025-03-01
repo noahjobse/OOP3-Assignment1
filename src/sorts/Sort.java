@@ -4,9 +4,9 @@ import java.util.Comparator;
 import java.util.Arrays;
 
 /**
- * Class representing a Comparator for comparing shapes based on their volume.
+ * Sorting utilities.
  * 
- * @author NJobse & CRacicot
+ * @author NJobse &amp; CRacicot
  */
 public class Sort {
     // ----------------- BubbleSort -----------------

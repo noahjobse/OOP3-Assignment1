@@ -16,6 +16,8 @@ public class SortManager {
     /**
      * Main constructor that takes all CLI arguments, parses them,
      * and triggers the sorting if valid arguments are provided.
+     *
+     * @param args the command-line arguments
      */
     public SortManager(String[] args) {
         System.out.println("Received from CLI: " + String.join(" ", args));
@@ -24,7 +26,7 @@ public class SortManager {
 
         for (String s : args) {
             // Normalize possible en-dashes or similar (optional but can help if copy/paste from Word)
-            s = s.replace('–', '-').replace('—', '-');
+            s = s.replace('\u2013', '-').replace('\u2014', '-');
 
             if (s.startsWith("-f") || s.startsWith("-F")) {
                 // e.g. "-fshapes1.txt" or "-F\"C:\temp\shapes1.txt\""
@@ -132,6 +134,8 @@ public class SortManager {
 
     /**
      * Benchmarks sorting time but does not modify the shapes field.
+     *
+     * @return the elapsed time in milliseconds, or -1 if sorting fails
      */
     public double benchmarkSorting() {
         if (shapes == null || shapes.length == 0) {
@@ -154,6 +158,8 @@ public class SortManager {
 
     /**
      * Prints the first, every 1000th, and last shapes (by sorted order).
+     *
+     * @param sortedShapes the sorted array of shapes
      */
     private void printKeySortedElements(Shape[] sortedShapes) {
         int totalShapes = sortedShapes.length;
@@ -185,9 +191,11 @@ public class SortManager {
 
     /**
      * Returns a comparator object based on the -t or -T option:
-     *   H -> naturalOrder() (by height, as shape implements Comparable)
-     *   A -> BaseAreaCompare
-     *   V -> VolumeCompare
+     *   H -&gt; naturalOrder() (by height, as shape implements Comparable)
+     *   A -&gt; BaseAreaCompare
+     *   V -&gt; VolumeCompare
+     *
+     * @return the Comparator for Shape, or null if an unknown type is provided
      */
     private Comparator<Shape> getComparator() {
         switch (compareType) {
@@ -202,6 +210,9 @@ public class SortManager {
 
     /**
      * Executes one of the sorting algorithms in Sort.java based on the -s or -S option.
+     *
+     * @param arr the array of shapes to sort
+     * @param comparator the comparator to use for sorting
      */
     private void executeSort(Shape[] arr, Comparator<Shape> comparator) {
         switch (sortType) {
@@ -218,6 +229,9 @@ public class SortManager {
 
     /**
      * Maps the sortType char to a descriptive name.
+     *
+     * @param sortType the sorting method character
+     * @return the name of the sorting algorithm
      */
     private String getSortName(char sortType) {
         switch (sortType) {
@@ -233,6 +247,8 @@ public class SortManager {
 
     /**
      * Maps the compareType char to the type of comparison.
+     *
+     * @return the comparison type as a String
      */
     private String getComparisonType() {
         switch (compareType) {
@@ -245,6 +261,9 @@ public class SortManager {
 
     /**
      * Retrieves the relevant numeric value based on compareType.
+     *
+     * @param shape the Shape from which to retrieve the value
+     * @return the numeric value for comparison
      */
     private double getShapeComparisonValue(Shape shape) {
         switch (compareType) {
@@ -257,7 +276,10 @@ public class SortManager {
 
     /**
      * Utility to remove leading or trailing quotes from a string.
-     * For example, "\"C:\\temp\\shapes1.txt\"" => "C:\temp\shapes1.txt"
+     * For example, "\"C:\\temp\\shapes1.txt\"" =&gt; "C:\temp\shapes1.txt"
+     *
+     * @param s the string potentially containing quotes
+     * @return the string with leading and trailing quotes removed
      */
     private String stripQuotes(String s) {
         if (s.length() >= 2) {

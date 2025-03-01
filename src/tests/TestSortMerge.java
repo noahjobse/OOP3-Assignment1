@@ -13,7 +13,7 @@ public class TestSortMerge {
         // Test sorting by height using Comparable (compareTo method in Shape)
         System.out.println("\nSorting by Height:");
         runTest(new String[] {
-                "-fres/shapes1.txt", // Load shapes from file
+                "-fres/shapes3.txt", // Load shapes from file
                 "-Th", // Compare by height (natural order)
                 "-Sm" // Sort using merge sort
         });

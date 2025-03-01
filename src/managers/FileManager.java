@@ -15,14 +15,16 @@ public class FileManager {
 
     /**
      * Format:
-     * <ShapeType> <Height> <SecondValue>
-     * - Cylinder <Height> <Radius>
-     * - Cone <Height> <Radius>
-     * - Pyramid <Height> <EdgeLength>
-     * - SquarePrism <Height> <EdgeLength>
-     * - TriangularPrism <Height> <EdgeLength>
-     * - PentagonalPrism <Height> <EdgeLength>
-     * - OctagonalPrism <Height> <EdgeLength>
+     * <pre>
+     * &lt;ShapeType&gt; &lt;Height&gt; &lt;SecondValue&gt;
+     * - Cylinder &lt;Height&gt; &lt;Radius&gt;
+     * - Cone &lt;Height&gt; &lt;Radius&gt;
+     * - Pyramid &lt;Height&gt; &lt;EdgeLength&gt;
+     * - SquarePrism &lt;Height&gt; &lt;EdgeLength&gt;
+     * - TriangularPrism &lt;Height&gt; &lt;EdgeLength&gt;
+     * - PentagonalPrism &lt;Height&gt; &lt;EdgeLength&gt;
+     * - OctagonalPrism &lt;Height&gt; &lt;EdgeLength&gt;
+     * </pre>
      * 
      * @param fileName the path to the file containing shape data
      * @return an array of Shape objects loaded from the file, or null if an error occurs.
@@ -75,5 +77,5 @@ public class FileManager {
             System.err.println("Error reading file: " + e.getMessage());
         }
         return shapes;
-}
+    }
 }
